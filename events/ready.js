@@ -84,22 +84,22 @@ module.exports = {
         context.drawImage(background, 0, 0, canvas.width, canvas.height);
         context.font = '80px OpenSans-Regular';
 
-        if (background.src === './bg/H4.png') {
+        if (background.src === './data/bg/H4.png') {
             context.fillStyle = '#e8f6ed';
             context.fillText('Alive Count : ' + alivecount, 110, 620, 300, 250); // alive
             context.fillText('Mic Record : ' + totalm, 520, 620, 300, 250); //tm
         }
-        if (background.src === './bg/fr.png') {
+        if (background.src === './data/bg/fr.png') {
             context.fillStyle = '#508d7a';
             context.fillText('Alive Count : ' + alivecount, 221, 620, 300, 250); // alive
             context.fillText('Mic Record : ' + totalm, 721, 620, 300, 250); //tm
         }
-        if (background.src === './bg/j2.png') {
+        if (background.src === './data/bg/j2.png') {
             context.fillStyle = '#016a68';
             context.fillText('Alive Count : ' + alivecount, 221, 680, 300, 250); // alive
             context.fillText('Mic Record: ' + totalm, 721, 680, 300, 250); //tm
         }
-        if (background.src === './bg/22.png') {
+        if (background.src === './data/bg/22.png') {
             context.fillStyle = '#016a68';
             context.fillText('Alive Count : ' + alivecount, 221, 680, 300, 250); // alive
             context.fillText('Mic Record: ' + totalm, 721, 680, 300, 250); //tm
