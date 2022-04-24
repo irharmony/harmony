@@ -1,11 +1,13 @@
 const voiceDiscord = require(`@discordjs/voice`)
+const {Guild,
+ChannelID} = require("../data/config.json")
 
 module.exports = {
     name: 'ready',
     once: false,
     execute(client) {
         console.log(`CONNECTED TO : ${client.user.username}`)
-        let SERVER = client.guilds.cache.get('578558255392096256')
+        let SERVER = client.guilds.cache.get(Guild)
 
         client.user.setPresence({
             status: 'dnd',
@@ -16,8 +18,8 @@ module.exports = {
         });
 
         const connection = voiceDiscord.joinVoiceChannel({
-            channelId: '899049887788834917',
-            guildId: '578558255392096256',
+            channelId: ChannelID,
+            guildId: Guild,
             adapterCreator: SERVER.voiceAdapterCreator,
             selfDeaf: true,
         });
