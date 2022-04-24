@@ -28,6 +28,7 @@ for (const file of eventFiles) {
     }
     console.log((event.name + ' LOADED'));
 }
+
 // client.on("messageCreate", async message => {
 //     if (message.author.bot || !message.guild) return
 //     const prefix = client.config.prefix
