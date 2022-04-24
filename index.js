@@ -36,6 +36,7 @@ for (const file of eventFiles) {
 }
 
 client.on("messageCreate", async message => {
+    console.log(message);
     if (message.author.bot || !message.guild) return
     if (!message.content.startsWith(Prefix)) return
     const args = message.content.slice(Prefix.length).trim().split(' ')
