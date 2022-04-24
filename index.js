@@ -38,7 +38,7 @@ for (const file of eventFiles) {
 client.on("messageCreate", async message => {
     if (message.author.bot || !message.guild) return
     if (!message.content.startsWith(Prefix)) return
-    const args = message.content.slice(Prefix.length).trim().split(/ +/g)
+    const args = message.content.slice(Prefix.length).trim().split(' ')
     const command = args.shift().toLowerCase()
     const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command))
     console.log(args);
