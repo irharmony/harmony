@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_VOICE_STATES] })
 
-const {token} = require("./data/config.json")
+const { token } = require("./data/config.json")
 client.login(token)
 
 const fs = require('fs')
@@ -55,5 +55,8 @@ for (const file of eventFiles) {
 //     }
 // })
 
+process.on('unhandledRejection', err => {
+    console.log(err);
+});
 
 
