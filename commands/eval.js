@@ -8,7 +8,8 @@ module.exports = {
     aliases: [],
     run: async (message, args) => {
         // const args = message.content.split(' ');
-
+        console.log(message);
+        console.log(args);
         if (message.author.id === '490519932292038659' || message.author.id === '916076947157684234' || message.author.id === '220895537207967744' || message.author.id === '925824559804977262') {
             if (!args.length) return;
             let evaled;
