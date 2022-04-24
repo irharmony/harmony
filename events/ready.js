@@ -5,27 +5,24 @@ module.exports = {
     once: false,
     execute(client) {
         console.log(`CONNECTED TO : ${client.user.username}`)
+        let SERVER = client.guilds.cache.get('578558255392096256')
+
         client.user.setPresence({
             status: 'dnd',
             activities: [{
                 type: 'WATCHING',
-                name: 'HARMONY',
+                name: SERVER.name,
             }]
         });
 
-        let SERVER = client.guilds.cache.get('578558255392096256')
         const connection = voiceDiscord.joinVoiceChannel({
             channelId: '899049887788834917',
             guildId: '578558255392096256',
             adapterCreator: SERVER.voiceAdapterCreator,
             selfDeaf: true,
         });
-
         const player = voiceDiscord.createAudioPlayer();
-        const resource = voiceDiscord.createAudioResource('http://stream.laut.fm/happyfmdance');
-
-        // player.play(resource);
-        connection.subscribe();
+        connection.subscribe(player);
     },
 };
 
