@@ -10,11 +10,11 @@ const embedmsg = new Discord.MessageEmbed()
 client.commands = new Discord.Collection()
 client.aliases = new Discord.Collection()
 
-console.log('------------- LOADING COMMANDS -------------');
 fs.readdir("./commands", (err, files) => {
     if (err) return console.log("Could not find any commands!")
     const jsFiles = files.filter(f => f.split(".").pop() === "js")
     if (jsFiles.length <= 0) return console.log("Could not find any commands!")
+console.log('------------- LOADING COMMANDS -------------');
     jsFiles.forEach(file => {
         const cmd = require(`./commands/${file}`)
         console.log(`Loaded ${file}`)
