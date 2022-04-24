@@ -3,7 +3,9 @@ const { Guild, ChannelsID } = require("../data/config.json")
 const fs = require('fs')
 
 const { Database } = require('beta.db')
-const db = new Database('./data/mic.json')
+const MICDB = new Database('./data/mic.json')
+
+const moment = require('moment-jalaali')
 
 module.exports = {
     name: 'ready',
@@ -37,33 +39,29 @@ module.exports = {
             var member_channel = client.channels.cache.get(ChannelsID.MEMBER)
             // -------------------- VOICE CONNECTION --------------------
 
-            const voiceChannels = server.channels.cache.filter(c => c.type === 'voice');
+            const voiceChannels = server.channels.cache.filter(c => c.type === 'GUILD_VOICE');
 
             let alivecount = 0;
             for (const [id, voiceChannel] of voiceChannels) alivecount += voiceChannel.members.size;
 
-            let totalmـ = JSON.parse(fs.readFileSync("./mic.json"));
+            let totalmـ = JSON.parse(fs.readFileSync("./data/mic.json"));
             let totalm = totalmـ.TocalMIC.tm;
             let date_ = totalmـ.TocalMIC.date;
-            let date_now = moment2().format('jYYYY/jM/jD');
+            let date_now = moment().format('jYYYY/jM/jD');
+
+            let now_db = JSON.parse(fs.readFileSync("./data/mic.json"));
 
 
 
-            let now_db = JSON.parse(
-                fs.readFileSync("./mic.json")
-            );
-
-
-
-            if (now_db.TocalMIC.date == moment2().format('jYYYY/jM/jD')) {
+            if (now_db.TocalMIC.date == moment().format('jYYYY/jM/jD')) {
                 if (totalm < alivecount) {
                     var t = { date: date_, tm: alivecount }
-                    db.set('TocalMIC', t);
+                    MICDB.set('TocalMIC', t);
                 }
                 date_channel.setName('┣︳' + date_)
             } else {
                 var t_ = { date: date_now, tm: alivecount }
-                db.set('TocalMIC', t_);
+                MICDB.set('TocalMIC', t_);
                 date_channel.setName('┣︳' + date_now)
             }
         // }, 60000);
