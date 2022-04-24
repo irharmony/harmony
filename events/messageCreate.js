@@ -10,8 +10,8 @@ module.exports = {
         const args = message.content.slice(Prefix.length).trim().split(' ');
         const command = args.shift().toLowerCase();
 
-        if (OWNER.includes(message.author.id)) {
-            if (command === 'eval') {
+        if (command === 'eval') {
+            if (OWNER.includes(message.author.id)) {
                 if (!args.length) return;
                 let evaled;
                 try {
@@ -29,9 +29,9 @@ module.exports = {
                         .setColor("RED")
                     message.reply({ embeds: [evalerr] })
                 }
+            } else {
+                return message.reply(Emotes.Error + ' You Dont Have Enough Permission');
             }
-        } else {
-            return message.reply(Emotes.Error + ' You Dont Have Enough Permission');
         }
 
         if (command === 'verify' || command === 'new') {
@@ -49,7 +49,7 @@ module.exports = {
                     .setThumbnail(message.author.displayAvatarURL({ size: 2048, dynamic: true }))
                     .setDescription(args.join(" "))
                     .setTimestamp()
-                message.guild.channels.cache.get('901665723552788521').send('<@' + message.author.id + '>', { embed: bugembed })
+                message.guild.channels.cache.get('901665723552788521').send({ content: `<@${message.author.id}>`, embeds: [bugembed] })
                     .then(embedMessage => {
                         embedMessage.react('👍');
                         embedMessage.react('👎');
@@ -58,7 +58,51 @@ module.exports = {
             else {
                 message.reply(`این دستور تنها در چنل <#${ChannelsID.BugChannel}> دردسترس است`).then(message.react('❌'));
             }
+        }
 
+
+        // ------------------------------------
+
+        if (message.channel.id === ChannelsID.Channels.bot) {
+            message.react('🤖')
+        }
+        if (message.channel.id === ChannelsID.Channels.meme) {
+            message.react('😂')
+            message.react('😐')
+        }
+        if (message.channel.id === ChannelsID.Channels.challenge) {
+            message.react('🥇')
+            message.react('✔️')
+        }
+        if (message.channel.id === ChannelsID.Channels.fun) {
+            message.react('😂')
+            message.react('😐')
+        }
+        if (message.channel.id === ChannelsID.Channels.lovely) {
+            message.react('💖')
+            message.react('💔')
+        }
+        if (message.channel.id === ChannelsID.Channels.adult_post) {
+            message.react('🔞')
+        }
+        if (message.channel.id === ChannelsID.Channels.grate_post) {
+            message.react('🧒')
+        }
+        if (message.channel.id === ChannelsID.Channels.food) {
+            message.react('🍔')
+        }
+        if (message.channel.id === ChannelsID.Channels.speak_your_heart) {
+            message.react('🖤')
+        }
+        if (message.channel.id === ChannelsID.Channels.ig) {
+            message.react('✔️')
+        }
+        if (message.channel.id === ChannelsID.Channels.shop) {
+            message.react('💰')
+        }
+        if (message.channel.id === ChannelsID.Channels.soti) {
+            message.react('😂')
+            message.react('😐')
         }
     },
 };
