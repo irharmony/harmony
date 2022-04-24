@@ -14,7 +14,7 @@ fs.readdir("./commands", (err, files) => {
     if (err) return console.log("Could not find any commands!")
     const jsFiles = files.filter(f => f.split(".").pop() === "js")
     if (jsFiles.length <= 0) return console.log("Could not find any commands!")
-console.log('------------- LOADING COMMANDS -------------');
+    console.log('------------- LOADING COMMANDS -------------');
     jsFiles.forEach(file => {
         const cmd = require(`./commands/${file}`)
         console.log(`Loaded ${file}`)
@@ -41,7 +41,9 @@ client.on("messageCreate", async message => {
     const args = message.content.slice(Prefix.length).trim().split(/ +/g)
     const command = args.shift().toLowerCase()
     const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command))
-
+    console.log(args);
+    console.log(command);
+    console.log(cmd);
     if (!cmd) return
 
     try {
@@ -62,3 +64,31 @@ process.on('unhandledRejection', err => {
 });
 
 
+
+
+
+// client.on("messageCreate", async message => {
+//     if (message.author.bot || !message.guild) return
+//     const prefix = client.config.prefix
+//     if (!message.content.startsWith(prefix)) return
+//     const args = message.content.slice(prefix.length).trim().split(/ +/g)
+//     const command = args.shift().toLowerCase()
+//     const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command))
+
+//     if (!cmd) return
+//     if (cmd.inVoiceChannel && !message.member.voice.channel) {
+//         embedmsg.setTitle(`${client.emotes.error} | You must be in a voice channel!`)
+//         embedmsg.setColor('#f67975')
+//         return message.channel.send({ embeds: [embedmsg] })
+//     }
+//     try {
+//         cmd.run(client, message, args)
+//     } catch (e) {
+//         embedmsg.setTitle(`${client.emotes.error} | Error:`)
+//         embedmsg.setColor('YELLOW')
+//         embedmsg.setDescription('```js\n' + e + '\n```')
+//         embedmsg.setTimestamp()
+//         client.channels.cache.get(client.config.log).send({ embeds: [embedmsg] })
+//         message.channel.send(`${client.emotes.error} | SomeThing Went Wrong`)
+//     }
+// })
