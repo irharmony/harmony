@@ -39,7 +39,7 @@ module.exports = {
         const player = voiceDiscord.createAudioPlayer();
         connection.subscribe(player);
 
-        // setInterval(async () => {
+        setInterval(async () => {
         const server = client.guilds.cache.get(Guild)
         var date_channel = client.channels.cache.get(ChannelsID.DATE)
         var member_channel = client.channels.cache.get(ChannelsID.MEMBER)
@@ -126,6 +126,6 @@ module.exports = {
         // let bannertest = new Discord.MessageAttachment(canvas.toBuffer(), "banner.png");
         // client.channels.cache.get('899049902909325373').send(bannertest)
 
-        // }, 60000);
+        }, 60000);
     },
 };
