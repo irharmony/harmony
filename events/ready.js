@@ -14,7 +14,7 @@ Canvas.registerFont('./data/font/OpenSans-ExtraBoldItalic.ttf', { family: 'OpenS
 module.exports = {
     name: 'ready',
     once: false,
-    execute(client) {
+    async execute(client) {
         console.log(`CONNECTED TO : ${client.user.username}`)
         let SERVER = client.guilds.cache.get(Guild)
 
@@ -65,22 +65,22 @@ module.exports = {
             MICDB.set('TocalMIC', t_);
             date_channel.setName('┣︳' + date_now)
         }
+        // -------------------- MEMBERCOUNT --------------------
 
-        // -------------------- BANNER --------------------
+        member_channel.setName('┏︳Users: ' + server.memberCount)
         
+        // -------------------- BANNER --------------------
+
         const canvas = Canvas.createCanvas(1242, 703);
         const context = canvas.getContext('2d');
-
         let image = [
             'fr.png',
             'j2.png',
             'H4.png',
             '22.png'
         ]
-
         var img = image[Math.floor(Math.random() * image.length)];
         const background = await Canvas.loadImage(`./data/bg/${img}`);
-
         context.drawImage(background, 0, 0, canvas.width, canvas.height);
         context.font = '80px OpenSans-Regular';
 
@@ -89,25 +89,21 @@ module.exports = {
             context.fillText('Alive Count : ' + alivecount, 110, 620, 300, 250); // alive
             context.fillText('Mic Record : ' + totalm, 520, 620, 300, 250); //tm
         }
-
         if (background.src === './bg/fr.png') {
             context.fillStyle = '#508d7a';
             context.fillText('Alive Count : ' + alivecount, 221, 620, 300, 250); // alive
             context.fillText('Mic Record : ' + totalm, 721, 620, 300, 250); //tm
         }
-
         if (background.src === './bg/j2.png') {
             context.fillStyle = '#016a68';
             context.fillText('Alive Count : ' + alivecount, 221, 680, 300, 250); // alive
             context.fillText('Mic Record: ' + totalm, 721, 680, 300, 250); //tm
         }
-
         if (background.src === './bg/22.png') {
             context.fillStyle = '#016a68';
             context.fillText('Alive Count : ' + alivecount, 221, 680, 300, 250); // alive
             context.fillText('Mic Record: ' + totalm, 721, 680, 300, 250); //tm
         }
-
         const bannerend = canvas.toBuffer();
         server.setBanner(bannerend).catch(console.error);
 
