@@ -7,15 +7,7 @@ client.login(token)
 const chalk = require('chalk')
 
 const { readdirSync } = require('fs')
-client.commands = new Discord.Collection();
 
-const commandFiles = readdirSync('./commands').filter(file => file.endsWith('.js'));
-console.log(chalk.red('------------- LOADING COMMANDS -------------'));
-for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.data.name, command);
-    console.log(chalk.blue(command.data.name + ' LOADED'));
-}
 console.log(chalk.red('-------------- LOADING EVENTS --------------'));
 const eventFiles = readdirSync('./events').filter(file => file.endsWith('.js'));
 for (const file of eventFiles) {
