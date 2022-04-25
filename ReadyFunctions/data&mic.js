@@ -1,4 +1,4 @@
-module.exports = ({ server, date_channel, fs, MICDB }) => {
+module.exports = ({ server, date_channel, member_channel, fs, MICDB }) => {
     const voiceChannels = server.channels.cache.filter(c => c.type === 'GUILD_VOICE');
     let alivecount = 0;
     for (const [id, voiceChannel] of voiceChannels) alivecount += voiceChannel.members.size;
@@ -18,4 +18,5 @@ module.exports = ({ server, date_channel, fs, MICDB }) => {
         MICDB.set('TocalMIC', t_);
         date_channel.setName('┣︳' + date_now)
     }
+    member_channel.setName('┏︳Users: ' + server.memberCount)
 }
