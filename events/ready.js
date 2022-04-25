@@ -39,9 +39,9 @@ module.exports = {
             var date_channel = client.channels.cache.get(ChannelsID.DATE)
             var member_channel = client.channels.cache.get(ChannelsID.MEMBER)
             // -------------------- DATE & MIC DB & MEMBER COUNT --------------------
-            functions.Data_Mic({ server, date_channel, member_channel, fs, MICDB })
+            functions.Data_Mic({ server, date_channel, member_channel, fs, MICDB, moment })
             // -------------------- BANNER --------------------
-            functions.Banner({Canvas})
+            functions.Banner({ Canvas })
         }, 60000);
     },
 };
