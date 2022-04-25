@@ -1,4 +1,4 @@
-module.exports = ({ message, ChannelsID, args }) => {
+module.exports = ({ message, ChannelsID, args, Discord }) => {
     if (message.channel.id === ChannelsID.BugChannel) {
         if (!args.length) return;
         message.react('✅')
