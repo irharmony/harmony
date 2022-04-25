@@ -7,14 +7,14 @@ const functions = require('../Functions/handler')
 
 module.exports = {
     name: 'messageCreate',
-    async execute(message) {
+    async execute(message, client) {
         if (!message.content.startsWith(Prefix) || message.author.bot) return;
 
         const args = message.content.slice(Prefix.length).trim().split(' ');
         const command = args.shift().toLowerCase();
 
         if (command === 'eval') {
-            functions.Eval({ Discord, message, args, OWNER, inspect })
+            functions.Eval({ Discord, message, args, OWNER, inspect, Emotes, client })
         }
 
         if (command === 'verify' || command === 'new') {
