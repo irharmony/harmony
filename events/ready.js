@@ -11,7 +11,7 @@ const moment = require('moment-jalaali')
 const Canvas = require('canvas');
 Canvas.registerFont('./data/font/OpenSans-ExtraBoldItalic.ttf', { family: 'OpenSans-Regular' })
 
-const functions = require('../ReadyFunctions/handler')
+const functions = require('../Functions/handler')
 
 module.exports = {
     name: 'ready',
