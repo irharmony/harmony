@@ -31,7 +31,7 @@ module.exports = {
 
 
         if (message.content.startsWith(`${Prefix}unban`)) {
-            functions.Unban({ message })
+            functions.Unban({ message, ServerBanRole })
         }
 
         // ------------------------------------

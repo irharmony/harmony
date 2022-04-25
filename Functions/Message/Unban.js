@@ -1,4 +1,4 @@
-module.exports = ({ message }) => {
+module.exports = ({ message, ServerBanRole }) => {
     if (message.member.roles.cache.find(r => r.id === '930971681441325117') || message.member.roles.cache.find(r => r.id === '899049712294965329')) {
         let BanRole = message.guild.roles.cache.get(ServerBanRole);
         let BanUser = message.mentions.members.first();
