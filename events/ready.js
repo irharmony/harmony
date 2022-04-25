@@ -11,6 +11,8 @@ const moment = require('moment-jalaali')
 const Canvas = require('canvas');
 Canvas.registerFont('./data/font/OpenSans-ExtraBoldItalic.ttf', { family: 'OpenSans-Regular' })
 
+const functions = require('../ReadyFunctions/handler')
+
 module.exports = {
     name: 'ready',
     once: false,
@@ -29,8 +31,7 @@ module.exports = {
         });
 
         // -------------------- VOICE CONNECTION --------------------
-        const { voice } = require('../ReadyFunctions/handler')
-        voice({ SERVER, voiceDiscord, Guild, ChannelsID })
+        functions.voice({ SERVER, voiceDiscord, Guild, ChannelsID })
 
 
         setInterval(async () => {
@@ -40,25 +41,8 @@ module.exports = {
 
             // -------------------- DATE & MIC DB --------------------
 
-            const voiceChannels = server.channels.cache.filter(c => c.type === 'GUILD_VOICE');
-            let alivecount = 0;
-            for (const [id, voiceChannel] of voiceChannels) alivecount += voiceChannel.members.size;
-            let totalmـ = JSON.parse(fs.readFileSync("./data/mic.json"));
-            let totalm = totalmـ.TocalMIC.tm;
-            let date_ = totalmـ.TocalMIC.date;
-            let date_now = moment().format('jYYYY/jM/jD');
-            let now_db = JSON.parse(fs.readFileSync("./data/mic.json"));
-            if (now_db.TocalMIC.date == moment().format('jYYYY/jM/jD')) {
-                if (totalm < alivecount) {
-                    var t = { date: date_, tm: alivecount }
-                    MICDB.set('TocalMIC', t);
-                }
-                date_channel.setName('┣︳' + date_)
-            } else {
-                var t_ = { date: date_now, tm: alivecount }
-                MICDB.set('TocalMIC', t_);
-                date_channel.setName('┣︳' + date_now)
-            }
+
+
             // -------------------- MEMBERCOUNT --------------------
 
             member_channel.setName('┏︳Users: ' + server.memberCount)
