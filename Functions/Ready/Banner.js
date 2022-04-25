@@ -5,7 +5,6 @@ module.exports = async ({ Canvas, server, MICDB }) => {
         'fr.png',
         'j2.png',
         'H4.png',
-        '22.png'
     ]
     var img = image[Math.floor(Math.random() * image.length)];
     const background = await Canvas.loadImage(`./data/bg/${img}`);
@@ -32,11 +31,7 @@ module.exports = async ({ Canvas, server, MICDB }) => {
         context.fillText('Alive Count : ' + alivecount, 221, 680, 300, 250); // alive
         context.fillText('Mic Record: ' + totalm, 721, 680, 300, 250); //tm
     }
-    if (background.src === './data/bg/22.png') {
-        context.fillStyle = '#016a68';
-        context.fillText('Alive Count : ' + alivecount, 221, 680, 300, 250); // alive
-        context.fillText('Mic Record: ' + totalm, 721, 680, 300, 250); //tm
-    }
+
     const bannerend = canvas.toBuffer();
     server.setBanner(bannerend).catch(console.error);
 
