@@ -1,1 +1,1 @@
-# SOON
+# Harmony Server Discord Bot
