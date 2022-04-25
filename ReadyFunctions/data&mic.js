@@ -1,4 +1,4 @@
-module.exports = ({ server, date_channel, member_channel, fs, MICDB }) => {
+module.exports = ({ server, date_channel, member_channel, fs, MICDB, moment }) => {
     const voiceChannels = server.channels.cache.filter(c => c.type === 'GUILD_VOICE');
     let alivecount = 0;
     for (const [id, voiceChannel] of voiceChannels) alivecount += voiceChannel.members.size;
