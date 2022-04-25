@@ -1,4 +1,4 @@
-module.exports = ({ SERVER,voiceDiscord, Guild, ChannelsID  }) => {
+module.exports = ({ SERVER,voiceDiscord, Guild, ChannelsID }) => {
     const connection = voiceDiscord.joinVoiceChannel({
         channelId: ChannelsID.VC,
         guildId: Guild,
