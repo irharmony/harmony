@@ -21,7 +21,6 @@ module.exports = {
         let SERVER = client.guilds.cache.get(Guild)
 
         // -------------------- PRESENCE --------------------
-
         client.user.setPresence({
             status: 'dnd',
             activities: [{
@@ -29,11 +28,8 @@ module.exports = {
                 name: SERVER.name,
             }]
         });
-
         // -------------------- VOICE CONNECTION --------------------
         functions.Voice({ SERVER, voiceDiscord, Guild, ChannelsID })
-
-
         setInterval(async () => {
             const server = client.guilds.cache.get(Guild)
             var date_channel = client.channels.cache.get(ChannelsID.DATE)
@@ -41,7 +37,7 @@ module.exports = {
             // -------------------- DATE & MIC DB & MEMBER COUNT --------------------
             functions.Data_Mic({ server, date_channel, member_channel, fs, MICDB, moment })
             // -------------------- BANNER --------------------
-            functions.Banner({ Canvas })
+            functions.Banner({ Canvas, server, MICDB })
         }, 60000);
     },
 };
