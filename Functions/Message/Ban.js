@@ -1,4 +1,4 @@
-module.exports = ({ message, readFile, Discord }) => {
+module.exports = ({ message, readFile, Discord, ServerBanRole, args,reasons }) => {
     if (message.member.roles.cache.find(r => r.id === '930971681441325117') || message.member.roles.cache.find(r => r.id === '899049712294965329')) {
         let BanRole = message.guild.roles.cache.get(ServerBanRole);
         let BanUser = message.mentions.members.first();
@@ -122,13 +122,13 @@ module.exports = ({ message, readFile, Discord }) => {
                 .addFields(
                     { name: 'توسط', value: `<@${message.author.id}>`, inline: true },
                     { name: 'به', value: `${BanUser}`, inline: true },
-                    { name: 'به دلیله', value: res.other, inline: false },
+                    { name: 'به دلیله', value: reasons.seven, inline: false },
                     { name: 'توضیحات اضافه', value: args.join(" "), inline: false },
                 )
 
             message.guild.channels.cache.get('899050010950389800').send({ embeds: [logmsg] })
             BanUser.roles.add(BanRole);
-            BanUser.setNickname(res.other)
+            BanUser.setNickname(reasons.seven)
             message.reply(`Added the role **Server Ban** to ${BanUser} by <@${message.author.id}>.`)
         }
     }
