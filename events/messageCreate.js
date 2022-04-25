@@ -22,26 +22,8 @@ module.exports = {
         }
 
         if (command === 'bug') {
-            if (message.channel.id === ChannelsID.BugChannel) {
-                if (!args.length) return;
-                message.react('✅')
-                const bugembed = new Discord.MessageEmbed()
-                    .setColor('RED')
-                    .setTitle('باگ گزارش شده توسط : ' + message.author.username)
-                    .setThumbnail(message.author.displayAvatarURL({ size: 2048, dynamic: true }))
-                    .setDescription(args.join(" "))
-                    .setTimestamp()
-                message.guild.channels.cache.get('901665723552788521').send({ content: `<@${message.author.id}>`, embeds: [bugembed] })
-                    .then(embedMessage => {
-                        embedMessage.react('👍');
-                        embedMessage.react('👎');
-                    })
-            }
-            else {
-                message.reply(`این دستور تنها در چنل <#${ChannelsID.BugChannel}> دردسترس است`).then(message.react('❌'));
-            }
+            functions.Bug({ message, ChannelsID, args })
         }
-
 
         if (command === 'ban') {
             if (message.member.roles.cache.find(r => r.id === '930971681441325117') || message.member.roles.cache.find(r => r.id === '899049712294965329')) {
