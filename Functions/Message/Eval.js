@@ -1,4 +1,4 @@
-module.exports = async ({Discord, message, args, OWNER, inspect }) => {
+module.exports = async ({ Discord, message, args, OWNER, inspect, Emotes, client }) => {
     if (OWNER.includes(message.author.id)) {
         if (!args.length) return;
         let evaled;
