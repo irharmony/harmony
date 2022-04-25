@@ -1,6 +1,3 @@
-const voiceDiscord = require(`@discordjs/voice`)
-const { Guild, ChannelsID } = require("../data/config.json")
-
 module.exports = ({SERVER}) => {
     const connection = voiceDiscord.joinVoiceChannel({
         channelId: ChannelsID.VC,
