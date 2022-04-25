@@ -7,7 +7,7 @@ const functions = require('../Functions/handler')
 
 module.exports = {
     name: 'messageCreate',
-    async execute(message, client) {
+    async execute(message) {
         if (!message.content.startsWith(Prefix) || message.author.bot) return;
 
         const args = message.content.slice(Prefix.length).trim().split(' ');
