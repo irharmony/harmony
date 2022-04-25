@@ -1,4 +1,4 @@
-module.exports = async ({ Canvas }) => {
+module.exports = async ({ Canvas, server, MICDB }) => {
     const canvas = Canvas.createCanvas(1242, 703);
     const context = canvas.getContext('2d');
     let image = [
@@ -11,6 +11,11 @@ module.exports = async ({ Canvas }) => {
     const background = await Canvas.loadImage(`./data/bg/${img}`);
     context.drawImage(background, 0, 0, canvas.width, canvas.height);
     context.font = '80px OpenSans-Regular';
+
+    const voiceChannels = server.channels.cache.filter(c => c.type === 'GUILD_VOICE');
+    let alivecount = 0;
+    for (const [id, voiceChannel] of voiceChannels) alivecount += voiceChannel.members.size;
+    const totalm = MICDB.get('TocalMIC').tm
 
     if (background.src === './data/bg/H4.png') {
         context.fillStyle = '#e8f6ed';
