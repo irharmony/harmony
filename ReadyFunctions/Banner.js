@@ -1,4 +1,4 @@
-module.exports = ({ Canvas }) => {
+module.exports = async ({ Canvas }) => {
     const canvas = Canvas.createCanvas(1242, 703);
     const context = canvas.getContext('2d');
     let image = [
