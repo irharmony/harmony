@@ -19,24 +19,13 @@ module.exports = {
     async execute(client) {
         console.log(`CONNECTED TO : ${client.user.username}`)
         let SERVER = client.guilds.cache.get(Guild)
-
-        // -------------------- PRESENCE --------------------
-        client.user.setPresence({
-            status: 'dnd',
-            activities: [{
-                type: 'WATCHING',
-                name: SERVER.name,
-            }]
-        });
-        // -------------------- VOICE CONNECTION --------------------
+        functions.Presence({ SERVER, client })
         functions.Voice({ SERVER, voiceDiscord, Guild, ChannelsID })
         setInterval(async () => {
             const server = client.guilds.cache.get(Guild)
             var date_channel = client.channels.cache.get(ChannelsID.DATE)
             var member_channel = client.channels.cache.get(ChannelsID.MEMBER)
-            // -------------------- DATE & MIC DB & MEMBER COUNT --------------------
             functions.Data_Mic({ server, date_channel, member_channel, fs, MICDB, moment })
-            // -------------------- BANNER --------------------
             functions.Banner({ Canvas, server, MICDB })
         }, 60000);
     },
