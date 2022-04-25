@@ -22,11 +22,11 @@ module.exports = {
         }
 
         if (command === 'bug') {
-            functions.Bug({ message, ChannelsID, args })
+            functions.Bug({ message, ChannelsID, args, Discord })
         }
 
         if (command === 'ban') {
-            functions.Ban({ message, readFile, Discord })
+            functions.Ban({ message, readFile, Discord, ServerBanRole, args, reasons })
         }
 
 
