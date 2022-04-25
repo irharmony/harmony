@@ -8,7 +8,7 @@ const functions = require('../Functions/handler')
 module.exports = {
     name: 'messageCreate',
     async execute(message) {
-        if (!message.content.startsWith(Prefix) || message.author.bot) return;
+        if (!message.guild || message.author.bot) return;
 
         const args = message.content.slice(Prefix.length).trim().split(' ');
         const command = args.shift().toLowerCase();
@@ -35,7 +35,7 @@ module.exports = {
         }
 
         // ------------------------------------
-
+        
         if (message.channel.id === ChannelsID.Channels.bot) {
             message.react('🤖')
         }
