@@ -31,7 +31,7 @@ module.exports = {
         });
 
         // -------------------- VOICE CONNECTION --------------------
-        functions.voice({ SERVER, voiceDiscord, Guild, ChannelsID })
+        functions.Voice({ SERVER, voiceDiscord, Guild, ChannelsID })
 
 
         setInterval(async () => {
@@ -40,8 +40,7 @@ module.exports = {
             var member_channel = client.channels.cache.get(ChannelsID.MEMBER)
 
             // -------------------- DATE & MIC DB --------------------
-
-
+            functions.Data_Mic({ server, date_channel, fs, MICDB })
 
             // -------------------- MEMBERCOUNT --------------------
 
