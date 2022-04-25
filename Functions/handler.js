@@ -5,3 +5,4 @@ exports.Presence = require('./Ready/Presence')
 
 exports.Eval = require('./Message/Eval')
 exports.New = require('./Message/New')
+exports.Bug = require('./Message/Bug')
