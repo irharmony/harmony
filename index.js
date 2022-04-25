@@ -19,6 +19,16 @@ for (const file of eventFiles) {
     }
     console.log(chalk.blue(event.name + ' LOADED'));
 }
+console.log(chalk.red('-------------- LOADING READY FUNCTIONS --------------'));
+const RFunctionFiles = readdirSync('./Functions/Ready').filter(file => file.endsWith('.js'));
+for (const file of RFunctionFiles) {
+    console.log(chalk.blue(file + ' LOADED'));
+}
+console.log(chalk.red('-------------- LOADING MESSAGE FUNCTIONS --------------'));
+const MFunctionFiles = readdirSync('./Functions/Message').filter(file => file.endsWith('.js'));
+for (const file of MFunctionFiles) {
+    console.log(chalk.blue(file + ' LOADED'));
+}
 
 process.on('unhandledRejection', err => {
     console.log(err);
