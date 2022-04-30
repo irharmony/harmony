@@ -22,7 +22,6 @@
     "ffmpeg-static": "^4.4.1",
     "libsodium-wrappers": "^0.7.9",
     "moment-jalaali": "^0.9.6",
-    "opusscript": "^0.0.8",
-    "discord-logs": "2.0.1"
+    "opusscript": "^0.0.8"
   }
 }
