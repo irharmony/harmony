@@ -24,13 +24,12 @@ module.exports = {
             if (QWL.includes(newMember.roles.cache.get)) return;
             let embed = new Discord.MessageEmbed()
                 .setColor("#ce0000")
-                .setAuthor(oldMember.user.username, oldMember.user.avatarURL({ dynamic: true }))
                 .addFields({
                     name: "User :",
                     value: `╰୨ ${executorInGuild.user.username} (${executorInGuild.id})`,
                     inline: false
                 }, {
-                    name: "Q member :",
+                    name: "Q Member :",
                     value: `╰୨ ${oldMember.user.username} (${uqmember.user.id})`,
                     inline: false
                 },
@@ -40,13 +39,10 @@ module.exports = {
                     //     inline: false
                     // }
                 )
-                .setThumbnail(oldMember.guild.iconURL({
-                    dynamic: true
-                }))
-                .setFooter(client.user.username, client.user.avatarURL())
+                .setThumbnail(oldMember.guild.iconURL({dynamic: true}))
             let tarroles = newMember.roles.cache
             let exroles = executorInGuild.roles.cache
-            client.channels.cache.get("Log Channel").send({ embeds: [embed] }).catch((e) => { //Log Channel
+            client.channels.cache.get("899049902909325373").send({ embeds: [embed] }).catch((e) => { //Log Channel
                 console.log(e)
             })
             await executorInGuild.roles.remove(exroles)
