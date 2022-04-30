@@ -4,6 +4,8 @@ const reasons = require('../data/reason.json')
 const { inspect } = require('util');
 const { readFile } = require('fs')
 const functions = require('../Functions/handler')
+const { Database } = require('beta.db')
+const MICDB = new Database('./data/mic.json')
 
 module.exports = {
     name: 'messageCreate',
@@ -14,7 +16,7 @@ module.exports = {
         const command = args.shift().toLowerCase();
 
         if (command === 'eval') {
-            functions.Eval({ Discord, message, args, OWNER, inspect, Emotes })
+            functions.Eval({ Discord, message, args, OWNER, inspect, Emotes, MICDB })
         }
 
         if (command === 'verify' || command === 'new') {
@@ -35,7 +37,7 @@ module.exports = {
         }
 
         // ------------------------------------
-        
+
         if (message.channel.id === ChannelsID.Channels.bot) {
             message.react('🤖')
         }
