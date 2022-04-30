@@ -1,5 +1,3 @@
-const logs = require('discord-logs');
-logs(client);
 const { QWL } = require('../data/config.json')
 
 module.exports = {
