@@ -1,4 +1,5 @@
-module.exports = async ({ Discord, message, args, OWNER, inspect, Emotes }) => {
+module.exports = async ({ Discord, message, args, OWNER, inspect, Emotes, MICDB }) => {
+    const MIC = MICDB;
     if (OWNER.includes(message.author.id)) {
         if (!args.length) return;
         let evaled;
