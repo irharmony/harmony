@@ -131,5 +131,23 @@ module.exports = ({ message, readFile, Discord, ServerBanRole, args,reasons }) =
             BanUser.setNickname(reasons.seven)
             message.reply(`Added the role **Server Ban** to ${BanUser} by <@${message.author.id}>.`)
         }
+        
+        
+        if (args[1] === '8') {
+
+            const logmsg = new Discord.MessageEmbed()
+                .setColor('GREEN')
+                .addFields(
+                    { name: 'توسط', value: `<@${message.author.id}>`, inline: true },
+                    { name: 'به', value: `${BanUser}`, inline: true },
+                    { name: 'به دلیله', value: reasons.eight, inline: false },
+                    { name: 'توضیحات اضافه', value: args.join(" "), inline: false },
+                )
+
+            message.guild.channels.cache.get('899050010950389800').send({ embeds: [logmsg] })
+            BanUser.roles.add(BanRole);
+            BanUser.setNickname(reasons.eight)
+            message.reply(`Added the role **Server Ban** to ${BanUser} by <@${message.author.id}>.`)
+        }
     }
 }
