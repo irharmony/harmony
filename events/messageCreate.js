@@ -83,6 +83,82 @@ module.exports = {
 };
 
 
+    if (message.content.startsWith(`${Prefix}createbax`)) {
+
+        if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("🤙");
+        const name = args.join(" ")
+        if (!name) {
+            return message.reply(`لطفا اسم بکس رو وارد کنید ${message.author}!`);
+        }
+
+        let harmonyCategory;
+        message.channel.send(
+            `در حال ساخت بکس **${name}** 😁`
+        );
+        message.guild.roles.create({ name: name }).then((r) => {
+            const permissions = [
+                { id: message.guild.roles.everyone, deny: [Permissions.FLAGS.CONNECT] },
+//Example
+                  {
+                    id: "ROLE-ID",
+                    allow: [
+                      Permissions.FLAGS.MANAGE_CHANNELS,
+                      Permissions.FLAGS.MANAGE_MESSAGES,
+                    ],
+                  },
+
+            ];
+
+            message.guild.channels
+                .create('═══════• ' + name + ' •═══════', {
+                    type: "GUILD_CATEGORY",
+                    permissionOverwrites: permissions,
+                })
+                .then((category) => {
+                    message.guild.channels
+                        .create(`┌💬│ᴄʜᴀᴛ ʀᴏᴏᴍ⌟`, {
+                            type: "GUILD_TEXT",
+                            parent: category.id,
+                            permissionOverwrites: [
+                                {
+                                    id: message.guild.roles.everyone,
+                                    deny: [Permissions.FLAGS.VIEW_CHANNEL],
+                                },
+                            ],
+                        })
+                        .then((c) => (harmonyCategory = c.id));
+
+                    message.guild.channels.create(`│🤖│ᴍᴜꜱɪᴄ ꜱᴇᴀʀᴄʜ⌟`, {
+                        type: "GUILD_TEXT",
+                        parent: category.id,
+                        permissionOverwrites: [
+                            {
+                                id: message.guild.roles.everyone,
+                                deny: [Permissions.FLAGS.VIEW_CHANNEL],
+                            },
+                        
+                        ],
+                    });
+
+                    message.guild.channels.create(`│🕯️│ᴩᴜʙʟɪᴄ ʜᴀʟʟ`, {
+                        type: "GUILD_VOICE",
+                        parent: category.id,
+                        permissionOverwrites: [
+                            {
+                                id: message.guild.roles.everyone,
+                                deny: [Permissions.FLAGS.VIEW_CHANNEL],
+                            },
+                        ],
+                    })
+                        .then(() => {
+                            message.channel.send(
+                                `بکس **${name}** با موفقیت ساخته شد | <#${harmonyCategory}> ✅`
+                            );
+                        });
+                });
+        });
+    }
+
  if (command === 'bax') {
     if (!message.member.hasPermission("ADMINISTRATOR")) return message.inlineReply("🤙");
      if (!args.length) {
