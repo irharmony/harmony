@@ -2,10 +2,7 @@ module.exports = ({ message, Emotes, args, Discord }) => {
     if (!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) return message.reply(Emotes.Error + ' You Dont Have Enough Permission');
     if (!args.length) return message.reply(`لطفا اسم بکس رو وارد کنید !`);
     message.guild.roles.create({
-        data: {
-            name: args.join(" "),
-        },
-        reason: `Created By ${message.user.tag}`,
+        name: args.join(" "), reason: `Created By ${message.author.username}`,
     }).then(r =>
         message.guild.channels.create('═══════• ' + r.name + ' •═══════', {
             type: 'GUILD_CATEGORY',
@@ -49,26 +46,10 @@ module.exports = ({ message, Emotes, args, Discord }) => {
                 }
             ]
         }),
-    ).then(r =>
-        message.guild.channels.create('┌💬│ᴄʜᴀᴛ ʀᴏᴏᴍ⌟', {
-            type: 'GUILD_TEXT',
-            parent: r.id
-        })).then(r =>
-            message.guild.channels.create('│🤖│ᴍᴜꜱɪᴄ ꜱᴇᴀʀᴄʜ⌟', {
-                type: 'GUILD_TEXT',
-                parent: r.parentID,
-            }))
-        .then(r =>
-            message.guild.channels.create('│🕯️│ᴩᴜʙʟɪᴄ ʜᴀʟʟ', {
-                type: 'GUILD_VOICE',
-                parent: r.parentID,
-            })).then(r =>
-                message.guild.channels.create('│🍹│ʜᴏᴜꜱᴇ ʜᴏʟᴅ', {
-                    type: 'GUILD_VOICE',
-                    parent: r.parentID,
-                })).then(r =>
-                    message.guild.channels.create('└🔒│ᴩʀɪᴠᴀᴛᴇ ʀᴏᴏᴍ', {
-                        type: 'GUILD_VOICE',
-                        parent: r.parentID,
-                    })).then(message.reply('Section Is Ready'))
+    ).then((category) => {
+        message.guild.channels.create(`┌💬│ᴄʜᴀᴛ ʀᴏᴏᴍ⌟`, {
+            type: "GUILD_TEXT",
+            parent: category.id,
+        })
+    })
 }
