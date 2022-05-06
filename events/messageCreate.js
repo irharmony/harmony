@@ -31,7 +31,9 @@ module.exports = {
             functions.Ban({ message, readFile, Discord, ServerBanRole, args, reasons })
         }
 
-
+if(command === 'bax'){
+    
+}
         if (message.content.startsWith(`${Prefix}unban`)) {
             functions.Unban({ message, ServerBanRole })
         }
@@ -98,7 +100,6 @@ module.exports = {
         message.guild.roles.create({ name: name }).then((r) => {
             const permissions = [
                 { id: message.guild.roles.everyone, deny: [Permissions.FLAGS.CONNECT] },
-//Example
                   {
                     id: "ROLE-ID",
                     allow: [
