@@ -50,6 +50,25 @@ module.exports = ({ message, Emotes, args, Discord }) => {
         message.guild.channels.create(`┌💬│ᴄʜᴀᴛ ʀᴏᴏᴍ⌟`, {
             type: "GUILD_TEXT",
             parent: category.id,
+        }).then((c) => (harmonyCategory = c.id));
+
+        message.guild.channels.create(`│🤖│ᴍᴜꜱɪᴄ ꜱᴇᴀʀᴄʜ⌟`, {
+            type: "GUILD_TEXT",
+            parent: category.id,
         })
+        message.guild.channels.create(`│🕯️│ᴩᴜʙʟɪᴄ ʜᴀʟʟ`, {
+            type: "GUILD_VOICE",
+            parent: category.id,
+        })
+        message.guild.channels.create(`│🍹│ʜᴏᴜꜱᴇ ʜᴏʟᴅ`, {
+            type: "GUILD_VOICE",
+            parent: category.id,
+        })
+        message.guild.channels.create(`└🔒│ᴩʀɪᴠᴀᴛᴇ ʀᴏᴏᴍ`, {
+            type: "GUILD_VOICE",
+            parent: category.id,
+        }).then(() => {
+            message.reply(`بکس **${args.join(" ")}** با موفقیت ساخته شد | <#${harmonyCategory}> ${Emotes.Tick}`);
+        });
     })
 }
