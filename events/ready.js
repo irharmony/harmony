@@ -24,9 +24,10 @@ module.exports = {
         setInterval(async () => {
             const server = client.guilds.cache.get(Guild)
             var date_channel = client.channels.cache.get(ChannelsID.DATE)
+            var mic_channel = client.channels.cache.get(ChannelsID.MIC)
             var member_channel = client.channels.cache.get(ChannelsID.MEMBER)
-            functions.Data_Mic({ server, date_channel, member_channel, fs, MICDB, moment })
-            functions.Banner({ Canvas, server, MICDB })
+            functions.Data_Mic({ server, date_channel, mic_channel, member_channel, fs, MICDB, moment })
+            //functions.Banner({ Canvas, server, MICDB })
         }, 60000);
     },
 };
