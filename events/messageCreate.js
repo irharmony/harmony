@@ -67,18 +67,18 @@ module.exports = {
         if (message.channel.id === ChannelsID.Channels.grate_post) {
             message.react('🧒')
         }
-        if (message.channel.id === ChannelsID.Channels.food) {
-            message.react('🍔')
-        }
+        // if (message.channel.id === ChannelsID.Channels.food) {
+        //     message.react('🍔')
+        // }
         if (message.channel.id === ChannelsID.Channels.speak_your_heart) {
             message.react('🖤')
         }
-        if (message.channel.id === ChannelsID.Channels.ig) {
-            message.react('✔️')
-        }
-        if (message.channel.id === ChannelsID.Channels.shop) {
-            message.react('💰')
-        }
+        // if (message.channel.id === ChannelsID.Channels.ig) {
+        //     message.react('✔️')
+        // }
+        // if (message.channel.id === ChannelsID.Channels.shop) {
+        //     message.react('💰')
+        // }
         if (message.channel.id === ChannelsID.Channels.soti) {
             message.react('😂')
             message.react('😐')
