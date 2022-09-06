@@ -4,11 +4,9 @@ const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Disc
 const { token } = require("./data/config.json")
 client.login(token)
 
-const chalk = require('chalk')
-
 const { readdirSync } = require('fs')
 
-console.log(chalk.red('-------------- LOADING EVENTS --------------'));
+console.log('-------------- LOADING EVENTS --------------');
 const eventFiles = readdirSync('./events').filter(file => file.endsWith('.js'));
 for (const file of eventFiles) {
     const event = require(`./events/${file}`);
@@ -17,17 +15,17 @@ for (const file of eventFiles) {
     } else {
         client.on(event.name, (...args) => event.execute(...args));
     }
-    console.log(chalk.blue(event.name + ' LOADED'));
+    console.log(event.name + ' LOADED');
 }
-console.log(chalk.red('-------------- LOADING READY FUNCTIONS --------------'));
+console.log('-------------- LOADING READY FUNCTIONS --------------');
 const RFunctionFiles = readdirSync('./Functions/Ready').filter(file => file.endsWith('.js'));
 for (const file of RFunctionFiles) {
-    console.log(chalk.blue(file + ' LOADED'));
+    console.log(file + ' LOADED');
 }
-console.log(chalk.red('-------------- LOADING MESSAGE FUNCTIONS --------------'));
+console.log('-------------- LOADING MESSAGE FUNCTIONS --------------');
 const MFunctionFiles = readdirSync('./Functions/Message').filter(file => file.endsWith('.js'));
 for (const file of MFunctionFiles) {
-    console.log(chalk.blue(file + ' LOADED'));
+    console.log(file + ' LOADED');
 }
 
 process.on('unhandledRejection', err => {
