@@ -13,12 +13,11 @@ module.exports = ({ server, date_channel, mic_channel, member_channel, fs, MICDB
             MICDB.set('TocalMIC', t);
         }
         date_channel.setName('┣︳' + date_)
-        mic_channel.setName('┣︳Total Mic: ' + alivecount)
     } else {
         var t_ = { date: date_now, tm: alivecount }
         MICDB.set('TocalMIC', t_);
         date_channel.setName('┣︳' + date_now)
-        mic_channel.setName('┣︳Total Mic: ' + alivecount)
     }
     member_channel.setName('┏︳Users: ' + server.memberCount)
+    mic_channel.setName('┣︳Total Mic: ' + alivecount)
 }
